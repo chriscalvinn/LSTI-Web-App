@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Penerimaan Mahasiswa Baru</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/logo_itb.png"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body onload="getFormDaftar()">
+	<nav class="navbar navbar-dark bg-primary" id="navbarITB">
+	  <a class="navbar-brand" href="home.html">
+		<img src="images/icons/logo_itb.png" width="50" height="50" alt="">
+	  </a>
+	</nav>
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+				
+			<form class="contact100-form validate-form">
+				<div class = "col">  
+					<ul class = "menu" id ="navigation"> 
+					<li><a href ="home.html"><font size="1" color="#007fff">Home > </font></a>
+					<a><font size="1">Pengisian Formulir Pendaftaran</font></a></li>
+					</ul><br/>
+				</div> 
+				<br/><span class="contact100-form-title">
+					Formulir Pendaftaran<br/>
+					Calon Mahasiswa Baru
+				</span>
+				<fieldset>
+					Nama Lengkap:<br/>
+					<input type="text" id="first-name" name="first-name" value="Nama"><br/><br/>
+					Tempat Lahir:<br/>
+					<input type="text" id="tempat-lahir" name="tempat-lahir" value="Tempat"><br/><br/>
+					Tanggal Lahir:<br/>
+					<input type="text" id="tanggal-lahir" name="tanggal-lahir" value="01/01/2001"><br/><br/>
+					NISN:<br/>
+					<input type="text" id="nisn" name="nisn" value="0000000000"><br/><br/>
+					NPSN:<br/>
+					<input type="text" id="npsn" name="npsn" value="1111111111"><br/><br/>
+					Email:<br/>
+					<input type="text" id="email" name="email" value="abc@gmail.com"><br/><br/>
+					Sekolah Asal:<br/>
+					<input type="text" id="sekolah" name="sekolah" value="SMA"><br/><br/>
+					Alamat:<br/>
+					<input type="text" id="alamat" name="alamat" value="Jakarta"><br/><br/>
+					Nama Ayah:<br/>
+					<input type="text" id="nama-ayah" name="nama-ayah" value="Nama ayah"><br/><br/>
+					Pekerjaan Ayah:<br/>
+					<input type="text" id="job-ayah" name="job-ayah" value="Pekerjaan ayah"><br/><br/>
+					Nama Ibu:<br/>
+					<input type="text" id="nama-ibu" name="nama-ibu" value="Nama ibu"><br/><br/>
+					Pekerjaan Ibu:<br/>
+					<input type="text" id="job-ibu" name="job-ibu" value="Pekerjaan ibu"><br/><br/>
+					Pendidikan Terakhir:<br/>
+					<input type="text" id="edu" name="edu" value="SMA"><br/><br/>
+					Nilai Terakhir:<br/>
+					<input type="text" id="nilai" name="nilai" value="999"><br/><br/>
+					Strata Tujuan:<br/>
+					<input type="text" id="strata" name="strata" value="S1"><br/><br/>
+					Fakultas Tujuan 1:<br/>
+					<input type="text" id="fak1" name="fak1" value="STEI"><br/><br/>
+					Program Studi Fakultas 1:<br/>
+					<input type="text" id="prodi1"  name="prodi1" value="STI"><br/><br/>
+					Fakultas Tujuan 2:<br/>
+					<input type="text" id="fak2" name="fak2" value="FTI"><br/><br/>
+					Program Studi Fakultas 2:<br/>
+					<input type="text" id="prodi2" name="prodi2" value="Tekkim"><br/><br/>
+					Fakultas Tujuan 3:<br/>
+					<input type="text" id="fak3" name="fak3" value="FTMD"><br/><br/>
+					Program Studi Fakultas 3:<br/>
+					<input type="text" id="prodi3" name="prodi3" value="Mesin"><br/><br/>
+				</fieldset>
+
+				<div class="container-contact100-form-btn">
+						<a class="contact100-form-btn" href="#" onclick="updateFormDaftar()">
+							<span>
+								Submit
+								<i class="zmdi zmdi-arrow-right m-l-8"></i>
+							</span>
+						</a>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script> 
+	<script src="js/edit_form_daftar.js"></script>
+
+<!-- Load script to upload file -->
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+</body>
+</html>

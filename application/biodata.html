@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Penerimaan Mahasiswa Baru</title>
+	<meta charset="UTF-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/logo_itb.png"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	<nav class="navbar navbar-dark bg-primary" id="navbarITB">
+	  <a class="navbar-brand" href="home.html">
+		<img src="images/icons/logo_itb.png" width="50" height="50" alt="">
+	  </a>
+	</nav>
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+				
+			<form class="contact100-form validate-form">
+				<div class = "col">  
+					<ul class = "menu" id ="navigation"> 
+					<li><a href ="home.html"><font size="1" color="#007fff">Home > </font></a>
+					<a><font size="1">Pengisian Biodata</font></a></li>
+					</ul><br/>
+				</div> 
+				<br/><span class="contact100-form-title">
+					Biodata<br/>
+					Calon Mahasiswa Baru
+				</span>
+
+				<label class="label-input100" for="first-name">Nama Lengkap</label>
+				<div class="wrap-input100 validate-input">
+					<input id="first-name" class="input100" type="text" name="first-name" placeholder="Diisi nama lengkap Anda">
+					<span class="focus-input100"></span>
+				</div>
+
+				<label class="label-input100" for="no-hp">Nomor HP</label>
+				<div class="wrap-input100 validate-input">
+					<input id="no-hp" class="input100" type="text" name="no-hp" placeholder="08XXXXXXXXXX">
+					<span class="focus-input100"></span>
+				</div>
+
+				<label class="label-input100" for="hp-ortu">Nomor HP Orang Tua</label>
+				<div class="wrap-input100 validate-input">
+					<input id="hp-ortu" class="input100" type="text" name="hp-ortu" placeholder="08XXXXXXXXXX">
+					<span class="focus-input100"></span>
+				</div>
+				
+				<label class="label-input100" for="no-id">Nomor Identitas</label>
+				<div class="wrap-input100 validate-input">
+					<input id="no-id" class="input100" type="text" name="no-id" placeholder="KTP/SIM/Paspor">
+					<span class="focus-input100"></span>
+                </div>
+                
+                <label class="label-input100" for="alamat">Alamat</label>
+				<div class="wrap-input100 validate-input">
+					<textarea id="alamat" class="input100" name="alamat" placeholder="Diisi alamat lengkap tempat tinggal Anda"></textarea>
+					<span class="focus-input100"></span>
+				</div>
+
+				<label class="label-input100" for="no-ijazah">Nomor Ijazah</label>
+				<div class="wrap-input100 validate-input">
+					<input id="no-ijazah" class="input100" type="text" name="no-ijazah" placeholder="Diisi nomor ijazah terakhir Anda">
+					<span class="focus-input100"></span>
+				</div>
+
+				<label class="label-input100" for="nilai">Laporan Nilai</label>
+				<div class="wrap-input100 validate-input">
+					<input id="nilai" class="input100" type="text" name="niai" placeholder="Diisi laporan nilai terakhir Anda">
+					<span class="focus-input100"></span>
+				</div>
+				<div class="container-contact100-form-btn">
+					<a id="submitbio" href="#" class="contact100-form-btn" onclick="submitBiodata()">
+						<span>
+							Submit
+							<i class="zmdi zmdi-arrow-right m-l-8"></i>
+						</span>
+					</a>
+				</div>
+				
+				<label class="label-input100" for="pas-foto">Pas Foto</label>
+				<input type="file" id ="foto" name="foto" accept="image/*"><br/>
+				  
+				<br/><label class="label-input100" for="akta">Akta Kelahiran</label>
+				<input type="file" id ="akta" name="akta" accept="image/*"><br/>
+				  
+				<br/><label class="label-input100" for="bukti-lulus">Bukti Kelulusan</label>
+				<input type="file" id="bukti-lulus" name="bukti-lulus" accept="image/*"><br/>
+				  
+				<br/><label class="label-input100" for="surat-buta-warna">Surat Bebas Buta Warna</label>
+  				<input type="file" id="surat-buta-warna" name="surat-buta-warna" accept="image/*"><br/>             
+				<div class="container-contact100-form-btn">
+					<a href ="#" id="submitberkas" class="contact100-form-btn">
+						<span>
+							Submit
+							<i class="zmdi zmdi-arrow-right m-l-8"></i>
+						</span>
+					</a>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+	<script src="js/biodata.js"></script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+</body>
+</html>

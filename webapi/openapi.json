@@ -1,0 +1,1114 @@
+{
+  "openapi" : "3.0.0",
+  "servers" : [ {
+    "description" : "SwaggerHub API Auto Mocking",
+    "url" : "https://virtserver.swaggerhub.com/ITB6/LSTI-FORM-DEKTM/1.0.0"
+  }, {
+    "description" : "Path to DEKTM server",
+    "url" : "http://178.128.104.74/penjualanformulirpendaftaranpesertapmb"
+  } ],
+  "info" : {
+    "description" : "REST API documentation to handle the sales of SM-ITB registration form for S1,S2,S3 applicants",
+    "version" : "1.0.0",
+    "title" : "Registration Form Sales for SM-ITB applicants",
+    "contact" : {
+      "email" : "admin-dektm@itb.ac.id"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags" : [ {
+    "name" : "admins",
+    "description" : "Operations available for admins"
+  }, {
+    "name" : "applicants",
+    "description" : "Operations available for applicants"
+  } ],
+  "paths" : {
+    "/form" : {
+      "get" : {
+        "tags" : [ "admins" ],
+        "summary" : "get all submitted forms",
+        "operationId" : "getAllForms",
+        "responses" : {
+          "200" : {
+            "description" : "query successful",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Form"
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized due to current user not logged in",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "logged in user doesn't have authorization to execute the operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "generic error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "applicants" ],
+        "summary" : "submit filled form to server",
+        "operationId" : "submitForm",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Form"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "submit successful",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "invalid syntax",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "generic error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/form/{id_form}" : {
+      "get" : {
+        "tags" : [ "admins", "applicants" ],
+        "summary" : "get one submitted form",
+        "operationId" : "getFormByID",
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "id_form",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "query successful",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Form"
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized due to current user not logged in",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "form ID not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "generic error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "applicants" ],
+        "summary" : "update submitted forms",
+        "operationId" : "updateFormByID",
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "id_form",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Form"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "update successful",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "invalid syntax",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized due to current user not logged in",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "form ID not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "generic error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "admins" ],
+        "summary" : "delete submitted forms",
+        "operationId" : "deleteFormByID",
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "id_form",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "delete successful",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized due to current user not logged in",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "logged in user doesn't have authorization to execute the operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "generic error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/payment" : {
+      "get" : {
+        "tags" : [ "admins" ],
+        "summary" : "get all submitted payment from server",
+        "operationId" : "getPayment",
+        "responses" : {
+          "200" : {
+            "description" : "get successful",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "invalid syntax",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "generic error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "applicants" ],
+        "summary" : "payment proof submitted to server",
+        "operationId" : "submitPayment",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Payment"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "submit successful",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "invalid syntax",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "generic error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/payment/{id_form}" : {
+      "get" : {
+        "tags" : [ "admins", "applicants" ],
+        "summary" : "get one submitted payment proof",
+        "operationId" : "getPaymentByID",
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "id_form",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "query successful",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Payment"
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized due to current user not logged in",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "form ID not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "generic error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "applicants", "admins" ],
+        "summary" : "update submitted payment",
+        "operationId" : "updatePaymentByID",
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "id_form",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Payment"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "update successful",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "invalid syntax",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized due to current user not logged in",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "form ID not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "generic error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/biodata" : {
+      "get" : {
+        "tags" : [ "admins" ],
+        "summary" : "get all biodata",
+        "operationId" : "getBio",
+        "responses" : {
+          "200" : {
+            "description" : "query successful",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Payment"
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized due to current user not logged in",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "form ID not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "generic error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "applicants" ],
+        "summary" : "Post applicant's biodata",
+        "operationId" : "postBio",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Biodata"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "submit successful",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "not logged in",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "invalid syntax",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "login not authorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "generic error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/biodata/{e-pin}" : {
+      "get" : {
+        "tags" : [ "admins", "applicants" ],
+        "summary" : "get applicants biodata",
+        "operationId" : "getBioByID",
+        "parameters" : [ {
+          "name" : "e-pin",
+          "in" : "path",
+          "required" : true,
+          "description" : "Parameter id",
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "query successful",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Biodata"
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "not logged in",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "login not authorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "generic error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "applicants" ],
+        "summary" : "Update applicant's biodata",
+        "operationId" : "updateBioByID",
+        "parameters" : [ {
+          "name" : "e-pin",
+          "in" : "path",
+          "required" : true,
+          "description" : "Parameter id",
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Biodata"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "update successful",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Biodata"
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "not logged in",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "invalid syntax",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "login not authorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "generic error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ResponseMessage"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Form" : {
+        "type" : "object",
+        "required" : [ "id_form", "tanggal_lahir", "NISN", "NPSN", "email", "sekolah_asal", "alamat", "nama_ayah", "pekerjaan_ayah", "nama_ibu", "pekerjaan_ibu", "pendidikan_terakhir", "nilai_terakhir", "strata_tujuan", "fakultas_tujuan_1", "program_studi_fakultas_1" ],
+        "properties" : {
+          "id_form" : {
+            "type" : "integer",
+            "example" : 1
+          },
+          "tanggal_lahir" : {
+            "type" : "string",
+            "format" : "date",
+            "example" : "1999-08-13"
+          },
+          "NISN" : {
+            "type" : "string"
+          },
+          "NPSN" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          },
+          "sekolah_asal" : {
+            "type" : "string"
+          },
+          "alamat" : {
+            "type" : "string"
+          },
+          "nama_ayah" : {
+            "type" : "string"
+          },
+          "pekerjaan_ayah" : {
+            "type" : "string"
+          },
+          "nama_ibu" : {
+            "type" : "string"
+          },
+          "pekerjaan_ibu" : {
+            "type" : "string"
+          },
+          "pendidikan_terakhir" : {
+            "type" : "string"
+          },
+          "nilai_terakhir" : {
+            "type" : "string"
+          },
+          "strata_tujuan" : {
+            "type" : "string"
+          },
+          "fakultas_tujuan_1" : {
+            "type" : "string"
+          },
+          "program_studi_fakultas_1" : {
+            "type" : "string"
+          },
+          "fakultas_tujuan_2" : {
+            "type" : "string"
+          },
+          "program_studi_fakultas_2" : {
+            "type" : "string"
+          },
+          "fakultas_tujuan_3" : {
+            "type" : "string"
+          },
+          "program_studi_fakultas_3" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Payment" : {
+        "type" : "object",
+        "required" : [ "id_form", "status_pembayaran", "bukti_pembayaran", "e-pin" ],
+        "properties" : {
+          "id_form" : {
+            "type" : "string",
+            "example" : 1
+          },
+          "status_pembayaran" : {
+            "type" : "string",
+            "example" : "not paid"
+          },
+          "bukti_pembayaran" : {
+            "type" : "string"
+          },
+          "e-pin" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Biodata" : {
+        "type" : "object",
+        "required" : [ "nomor_hp", "nomor_hp_ortu", "ijazah", "laporan_nilai" ],
+        "properties" : {
+          "e-pin" : {
+            "type" : "integer"
+          },
+          "nama" : {
+            "type" : "string"
+          },
+          "nomor_hp" : {
+            "type" : "string"
+          },
+          "nomor_hp_ortu" : {
+            "type" : "string"
+          },
+          "alamat" : {
+            "type" : "string"
+          },
+          "ijazah" : {
+            "type" : "string"
+          },
+          "laporan_nilai" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ResponseMessage" : {
+        "type" : "object",
+        "required" : [ "response-code", "message" ],
+        "properties" : {
+          "response-code" : {
+            "type" : "integer",
+            "example" : 404
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "not found"
+          }
+        }
+      }
+    }
+  }
+}
